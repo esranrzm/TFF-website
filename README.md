@@ -1,4 +1,9 @@
 # TTF NATIONAL TEAM SELECTOR
+Project contributors:
+ * Esra Nur Özüm
+ * Bengisu Özdemir
+ * Sarp Bora Polat
+ * Mustafa Ata Onbaş
 
 ## Server URL
 https://tffnationalteamselector-v2.herokuapp.com/
