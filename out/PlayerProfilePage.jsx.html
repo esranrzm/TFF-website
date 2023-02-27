@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: PlayerProfilePage.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: PlayerProfilePage.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>
+import { useSelector, useDispatch } from 'react-redux'
+
+import Spinner from '../components/Spinner'
+import {useNavigate} from 'react-router-dom'
+
+import { useLocation } from 'react-router-dom';
+import 'mdb-react-ui-kit/dist/css/mdb.min.css';
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import { MDBCol, MDBContainer, MDBRow, MDBCard, MDBCardText, MDBCardBody, MDBCardImage, MDBTypography, MDBIcon } from 'mdb-react-ui-kit';
+
+/**
+ * from state (line 23) player object has been taken. Then, each paramter has been put to the relevant location from table.
+ */
+function PlayerProfile() {
+ 
+    const {players, isLoading, isSuccess} = useSelector((state) => state.players)
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+    
+    const {state} = useLocation();
+    const {personel, name, team, pos, Rating, dob, foot, age, pob } = state; // Read values passed on state
+
+    
+
+   
+    
+    if(isLoading){
+        return &lt;Spinner />
+    }
+    return (
+        &lt;>
+            
+            &lt;MDBContainer className="py-5 h-100">
+                &lt;MDBRow className="justify-content-center align-items-center h-80">
+                    &lt;MDBCol lg="6" className="mb-4 mb-lg-0">
+                        &lt;MDBCard className="mb-3" style={{ borderRadius: '.5rem' }}>
+                            &lt;MDBRow className="g-0">
+                                &lt;MDBCol md="4" className="gradient-custom text-center text-white"
+                                    style={{ borderTopLeftRadius: '.5rem', borderBottomLeftRadius: '.5rem' }}>
+                                    &lt;MDBCardImage src="https://media.istockphoto.com/id/1300845620/tr/vekt%C3%B6r/kullan%C4%B1c%C4%B1-simgesi-d%C3%BCz-beyaz-arka-plan-%C3%BCzerinde-izole-kullan%C4%B1c%C4%B1-sembol%C3%BC-vekt%C3%B6r-ill%C3%BCstrasyonu.jpg?s=612x612&amp;w=0&amp;k=20&amp;c=BapxTLg8R3jjWnvaSXeHqgtou_-FcyBKmAkUsgwQzxU="
+                                        alt="Avatar" className="my-5" style={{ width: '80px' }} fluid />
+                                    &lt;MDBTypography tag="h5">{name}&lt;/MDBTypography>
+                                    &lt;MDBCardText>{team}&lt;/MDBCardText>                               
+                                &lt;/MDBCol>
+                                &lt;MDBCol md="8">
+                                    &lt;MDBCardBody className="p-4">
+                                        &lt;MDBTypography tag="h6">Players Personel Information&lt;/MDBTypography>
+                                        &lt;hr className="mt-0 mb-4" />
+                                        &lt;MDBRow className="pt-1">
+                                        &lt;MDBCol size="6" className="mb-3">
+                                            &lt;MDBTypography tag="h6">Date of Birth&lt;/MDBTypography>
+                                            &lt;MDBCardText className="text-muted">{dob}&lt;/MDBCardText>
+                                        &lt;/MDBCol>
+                                        &lt;MDBCol size="6" className="mb-3">
+                                            &lt;MDBTypography tag="h6">Place of Birth&lt;/MDBTypography>
+                                            &lt;MDBCardText className="text-muted">{pob}&lt;/MDBCardText>
+                                        &lt;/MDBCol>
+                                        &lt;/MDBRow>
+                    
+                                        
+                                        &lt;hr className="mt-0 mb-4" />
+                                        &lt;MDBRow className="pt-1">
+                                        &lt;MDBCol size="6" className="mb-3">
+                                            &lt;MDBTypography tag="h6">Prefered Foot&lt;/MDBTypography>
+                                            &lt;MDBCardText className="text-muted">{foot}&lt;/MDBCardText>
+                                        &lt;/MDBCol>
+                                        &lt;MDBCol size="6" className="mb-3">
+                                            &lt;MDBTypography tag="h6">Age&lt;/MDBTypography>
+                                            &lt;MDBCardText className="text-muted">{age}&lt;/MDBCardText>
+                                        &lt;/MDBCol>
+                                        &lt;/MDBRow>
+                                    &lt;/MDBCardBody>
+                                &lt;/MDBCol>
+                            &lt;/MDBRow>
+                        &lt;/MDBCard>
+                    &lt;/MDBCol>
+                &lt;/MDBRow>
+            &lt;/MDBContainer>
+            &lt;br />
+            &lt;hr className="solid" />
+
+            &lt;h2>PLAYERS RECENT HISTORY&lt;/h2>
+            &lt;h2>{personel}&lt;/h2>
+            &lt;table class="table">
+            &lt;thead>
+                &lt;tr>
+                &lt;th scope="col">#&lt;/th>
+                &lt;th scope="col">Name&lt;/th>
+                &lt;th scope="col">Team&lt;/th>
+                &lt;th scope="col">Position&lt;/th>
+                &lt;th scope="col">Overall Rating&lt;/th>
+                &lt;/tr>
+            &lt;/thead>
+            &lt;tbody>
+                &lt;tr>
+                &lt;th scope="row">1&lt;/th>
+                &lt;td>{name}&lt;/td>
+                &lt;td>{team}&lt;/td>
+                &lt;td>{pos}&lt;/td>
+                &lt;td>{Rating}&lt;/td>
+                &lt;/tr>
+            &lt;/tbody>
+            &lt;/table>
+            
+            
+
+
+            
+        &lt;/>
+    )
+}
+
+export default PlayerProfile</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#PlayerProfile">PlayerProfile</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Tue Dec 13 2022 20:31:45 GMT+0300 (GMT+03:00)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
