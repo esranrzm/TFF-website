@@ -6,7 +6,7 @@ const connectDB = async () => {
 		useUnifiedTopology: true,
 	};
     try{
-        const conn = mongoose.connect('mongodb+srv://ata:tff123@nationalteamselector.hboi4g2.mongodb.net/cs308?retryWrites=true&w=majority', connectionParams)
+        const conn = mongoose.connect(HERE COMES THE CONNECTION STRING OF THE DATABASE, connectionParams)
         console.log("MongoDB Connected".cyan.underline);
     }
     catch (error){
@@ -16,6 +16,3 @@ const connectDB = async () => {
 }
 
 module.exports = connectDB
-
-
-//npm run client, npm run server
